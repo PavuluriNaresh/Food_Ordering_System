@@ -1,6 +1,5 @@
 print("\n" * 2)                  
-import datetime                    
-import os                          
+import datetime                                          
 
 list_foods = []                    
 list_drinks = []                   
@@ -14,11 +13,6 @@ var_discount_3 = 5000
 var_discount_1_rate = 0.05                
 var_discount_2_rate = 0.10                
 var_discount_3_rate = 0.15                
-
-
-navigator_symbol = "/" 
-if os.name == "nt":
-    navigator_symbol = "\\" 
 
 
 def def_default():
@@ -41,24 +35,24 @@ def def_main():
         input_1 = str(input("Please Select Your Operation: ")).upper()    
         if (len(input_1) == 1):                                           
             if (input_1 == 'O'):                                          
-                print("\n" * 10)                                        
+                print("\n" * 5)                                        
                 def_order_menu()                                          
                 break                                                     
             elif (input_1 == 'R'):                                        
-                print("\n" * 3)                                        
+                print("\n" * 5)                                        
                 def_report()                                              
                 break                                                     
             elif (input_1 == 'P'):                                        
-                print("\n" * 10)                                         
+                print("\n" * 5)                                         
                 def_payment()                                             
                 break                                                     
             elif (input_1 == 'E'):                                        
                 print("*" * 32 + "THANK YOU" + "*" * 31 + "\n")           
                 break                                                     
             else:                                                                                 
-                print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")     
+                print("\n" * 5 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")     
         else:                                                                                     
-            print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")        
+            print("\n" * 5 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")        
 
 def def_order_menu():                                                                               
     while True:                                             
@@ -69,7 +63,7 @@ def def_order_menu():
               "\t(E) EXIT\n" +
               "_" * 72)
 
-        input_1 = str(input("Please Select Your Operation: ")).upper() 
+        input_1 = str(input("Please Select Your Order: ")).upper() 
         if len(input_1) == 1:
             if (input_1 == 'F'):  
                 print("\n" * 10)
@@ -97,6 +91,7 @@ def def_full_file_reader():
         list_foods.append(str(i.strip())) 
     file_foods.close()
 
+
     file_drinks = open(r'C:\Users\babup\Downloads\food-ordering-system\Food Ordering System\list_drinks.fsd','r') 
     for i in file_drinks:
         list_drinks.append(str(i.strip()))
@@ -112,7 +107,6 @@ def def_full_file_reader():
         if '$' in list_foods[i]:
             list_foods[i] = str(list_foods[i][:list_foods[i].index('$') - 1]) + ' ' * (20 - (list_foods[i].index('$') - 1)) + str(list_foods[i][list_foods[i].index('$'):])
         i += 1
-
     i = 0
     while i <= (len(list_drinks) - 1):
         if '$' in list_drinks[i]:
@@ -199,14 +193,14 @@ def def_food_drink_order():
                      input_2 = input("How Many You Want to Order?: ").upper() 
                      if int(input_2) > 0:
                         list_item_order[int(input_1) - 1] += int(input_2) 
-                        print("\n" * 10)
+                        print("\n" * 5)
                         print("Successfully Ordered!")
                         def_food_drink_order() 
                         break
                      else:
-                        print("\n" * 10 + "ERROR: Invalid Input (" + str(input_2) + "). Try again!")
+                        print("\n" * 5 + "ERROR: Invalid Input (" + str(input_2) + "). Try again!")
             except:
-                print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")
+                print("\n" * 5 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")
 
 def def_other_services():
     while True:
@@ -251,8 +245,6 @@ def def_report():
         print("*" * 33 + "REPORT" + "*" * 33 + "\n")
         file_report = open(r'C:\Users\babup\Downloads\food-ordering-system\Food Ordering System\report.fsd', 'r').read() 
         print(file_report)
-        s=input("****************")
-        print("***************WE RECIVED YOUR REPORT******************")
         print("\n(M) MAIN MENU          (E) EXIT\n" + "_" * 72)
         input_1 = str(input("Please Select Your Operation: ")).upper()
         if (input_1 == 'M'):
@@ -329,7 +321,7 @@ def def_payment():
         if (input_1 == 'P'):
             print("\n" * 10)
             print("Successfully Paid!")
-            file_report = open('files'+navigator_symbol+'report.fsd', 'a') 
+            file_report = open(r'C:\Users\babup\Downloads\food-ordering-system\Food Ordering System\report.fsd', 'a') 
             file_report.write(report_new)
             file_report.close()
             def_default() 
